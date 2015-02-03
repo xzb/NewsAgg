@@ -1,0 +1,36 @@
+﻿@model MvcApplication1.Models.article
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>article</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.title)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.title)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.guid)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.guid)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.pubDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.pubDate)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
