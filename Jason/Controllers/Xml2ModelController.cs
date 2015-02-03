@@ -31,7 +31,7 @@ namespace MvcApplication8.Controllers
 
             XmlSerializer serializer = new XmlSerializer(typeof(rss));
 
-            HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("http://rss.nytimes.com/services/xml/rss/nyt/US.xml");
+            //HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create("http://rss.nytimes.com/services/xml/rss/nyt/US.xml");
             //使用Cookie设置AllowAutoRedirect属性为false,是解决“尝试自动重定向的次数太多。”的核心
            // request.CookieContainer = new CookieContainer();
            // request.AllowAutoRedirect = false;
@@ -56,9 +56,20 @@ namespace MvcApplication8.Controllers
 
           //  reader.Close();
 
+
+            db.sources.Add(new Models.source("NYTimes",DateTime???));
+
             for (var i = 0; i < cars.item.Length; i++)
             {
-                db.channel.Add(cars.item[i]);
+                string httpTime = cars.item[i].pubDate;
+                DateTime time = DateTime.Parse(httpTime);
+
+
+                Models.item item= new Models.item(cars.item[i], time,"NYTimes");
+
+                db.channel.Add(item);               //item include 4 elements
+                //db.channel.Add(cars.item[i]);
+                
 
             }
             db.SaveChanges();

@@ -18,6 +18,25 @@ namespace MvcApplication8.Models
 
         [System.Xml.Serialization.XmlElement("guid")]
         public string guid { get; set; }
+
+        public DateTime? Date { get; set; }
+
+        public string srcName { get; set; }
+        public string category { get; set; }
+        public string[] keyword { get; set; }
+        public item()
+        {
+        }
+
+        public item(item i, DateTime d,string s) {
+            title = i.title;
+            pubDate = i.pubDate;
+            guid = i.guid;
+            Date = d;
+            srcName = s;
+        }
+
+        //public virtual source source { get; set; }
     }
 
 
