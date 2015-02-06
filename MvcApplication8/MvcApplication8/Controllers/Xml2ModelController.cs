@@ -88,7 +88,7 @@ namespace MvcApplication8.Controllers
 
                 // 每次添加新条目前，先与source里的最新时间对比
                 if (time <= newTime)       //time值小于最新时间，舍弃
-                    break;
+                    continue;
                 else
                 {
                     Models.source src = db.sources.Find(1);
