@@ -21,7 +21,7 @@ namespace MvcApplication8.Models
 
         public DateTime? Date { get; set; }
 
-      //  public string srcName { get; set; }
+        public string srcName { get; set; }
       //  public string category { get; set; }
       //  public string[] keyword { get; set; }
         public item()

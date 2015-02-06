@@ -8,7 +8,6 @@ using System.Web.Mvc;
 using MvcApplication8.Models;
 using System.IO;
 using System.Xml.Serialization;
-using MvcApplication8.Models;
 using System.Net;
 using System.Xml;
 
@@ -57,7 +56,6 @@ namespace MvcApplication8.Controllers
           //  reader.Close();
 
 
-            //db.sources.Add(new Models.source("NYTimes",DateTime???));
             
             for (var i = 0; i < cars.item.Length; i++)
             {
@@ -65,9 +63,23 @@ namespace MvcApplication8.Controllers
                 DateTime time = DateTime.Parse(httpTime);
             
                 
-                if (time <= db.channel.Find(62).Date) break;
-
-
+                //if (time <= db.channel.Find(62).Date) break;
+                // 每次添加新条目前，先与source里的最新时间对比
+                if (db.sources.Find(1) == null)
+                {
+                    Models.source src = new Models.source("NYTimes", time);
+                    db.sources.Add(src);
+                }
+                else
+                {
+                    Models.source src = db.sources.Find(1);
+                    DateTime newTime = src.newDate.Value;
+                    if (time <= newTime)       //time值小于最新时间，舍弃
+                        break;
+                    else {
+                        src.newDate = time;    //更新时间
+                    }
+                }
 
 
                 Models.item item= new Models.item(cars.item[i], time);
@@ -78,6 +90,9 @@ namespace MvcApplication8.Controllers
                 
 
             }
+
+            
+
             db.SaveChanges();
             return View(db.channel.ToList());
         }
