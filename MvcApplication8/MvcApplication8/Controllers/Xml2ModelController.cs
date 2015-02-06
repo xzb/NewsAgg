@@ -80,7 +80,7 @@ namespace MvcApplication8.Controllers
                         src.newDate = time;    //更新时间
                     }
                 }
-
+                //只能添加一条，问题未解决???
 
                 Models.item item= new Models.item(cars.item[i], time);
 
