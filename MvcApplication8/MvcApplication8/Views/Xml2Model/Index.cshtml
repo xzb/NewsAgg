@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿@model IEnumerable<MvcApplication8.Models.item>
+@model IEnumerable<MvcApplication8.Models.item>
 
 @{
     ViewBag.Title = "Index";
@@ -15,6 +14,8 @@
 <table>
     <tr>
         <th>
+        </th>
+		<th>
         </th>
         <th>
             @Html.DisplayNameFor(model => model.title)
@@ -34,7 +35,7 @@
             <!--@Html.ActionLink("upvote", "upvote", new { id = item.Id })       MVC自带法得跳转到upvote页面再立刻跳转回来，不好用-->            
             
             <!--<a href="#" id="upvote-ajax">upvote</a>-->        <!--用id调用jQuery是不是不能传参数？-->
-            
+           
             <!--<a href="javascript:;" onclick="ClickUpvote(@item.Id)">            <!--需要修改母版<a>的样式-->
             <!--    <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" /> </a>-->
 
@@ -42,6 +43,9 @@
                  onclick="ClickUpvote(@item.Id)" />
 
         </td>
+		
+		<td>@Html.DisplayFor(modelItem => item.totalLike)</td>
+
         <td>
           <a href="@Html.DisplayFor(modelItem => item.guid)" target="_blank">@Html.DisplayFor(modelItem => item.title)</a>  
         </td>
@@ -54,59 +58,3 @@
 }
 
 </table>
-=======
-﻿@model IEnumerable<MvcApplication8.Models.item>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<!--<link href="~Content/Xml2Model_index.css" type="text/css" rel="stylesheet" />-->
-<script src="~/Scripts/jquery-1.7.1.js" type="text/javascript"></script>
-<script src="~/Scripts/upvote.js" type="text/javascript"></script>
-
-<h2>Index</h2>
-
-
-<table>
-    <tr>
-        <th>
-        </th>
-        <th>点赞数
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.title)
-        </th>
-       
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {        <!--可否逆序display?-->
-    <tr>
-        <td>
-            <!--<input type="button" onclick="save()" value="upvote" />-->       <!--用JavaScript的方法-->
-            <!--@Html.ActionLink("upvote", "upvote", new { id = item.Id })       MVC自带法得跳转到upvote页面再立刻跳转回来，不好用-->
-            
-            <!--<a href="#" id="upvote-ajax">upvote</a>-->        <!--未实现对应用户id和文章id的功能-->
-            <a href="javascript:;" id="upvote-ajax">
-                <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" />      <!--onclick="ClickUpvote()" />-->
-            </a>
-        </td>
-        <td>@Html.DisplayFor(modelItem => item.totalLike)</td>
-        <td>
-          <a href="@Html.DisplayFor(modelItem => item.guid)" target="_blank">@Html.DisplayFor(modelItem => item.title)</a>  
-        </td>
-       
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        
-    </tr>
-}
-
-</table>
->>>>>>> cb1951607f4b50a1d188d71c355aa21c8b561f23
