@@ -63,7 +63,7 @@ namespace MvcApplication8.Controllers
               初始化最新时间newTime
              ******************************/
             DateTime newTime;
-            if (db.sources.Find(1) == null)
+            if (db.sources.Find("NYTimes") == null)
             {
                 string httpTime = cars.item[cars.item.Length - 1].pubDate;
                 newTime = DateTime.Parse(httpTime);
@@ -72,7 +72,7 @@ namespace MvcApplication8.Controllers
             }
             else
             {
-                Models.source src = db.sources.Find(1);
+                Models.source src = db.sources.Find("NYTimes");
                 newTime = src.newDate.Value;
             }
 
@@ -91,14 +91,14 @@ namespace MvcApplication8.Controllers
                     continue;
                 else
                 {
-                    Models.source src = db.sources.Find(1);
+                    Models.source src = db.sources.Find("NYTimes");
                     src.newDate = time;    //更新时间
                 }
 
 
-                Models.item item = new Models.item(cars.item[i], time);
+                Models.item item = new Models.item(cars.item[i], time, "NYTimes");
 
-                db.channel.Add(item);               //item include 4 elements
+                db.items.Add(item);               //item include 4 elements
                 //db.channel.Add(cars.item[i]);
 
 
@@ -107,7 +107,7 @@ namespace MvcApplication8.Controllers
 
 
             db.SaveChanges();
-            return View(db.channel.ToList());
+            return View(db.items.ToList());
         }
 
 

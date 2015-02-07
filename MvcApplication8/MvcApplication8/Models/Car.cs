@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 using System.Xml.Serialization;
@@ -21,6 +22,7 @@ namespace MvcApplication8.Models
 
         public DateTime? Date { get; set; }
 
+        [ForeignKey("source")]
         public string srcName { get; set; }
       //  public string category { get; set; }
       //  public string[] keyword { get; set; }
@@ -28,15 +30,15 @@ namespace MvcApplication8.Models
         {
         }
 
-        public item(item i, DateTime d) {
+        public item(item i, DateTime d, string s) {
             title = i.title;
             pubDate = i.pubDate;
             guid = i.guid;
             Date = d;
-           // srcName = s;
+            srcName = s;
         }
 
-        //public virtual source source { get; set; }
+        public virtual source source { get; set; }
     }
 
 

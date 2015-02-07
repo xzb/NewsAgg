@@ -18,7 +18,7 @@ namespace MvcApplication8.Models
         {
         }
 
-        public DbSet<item> channel { get; set; }
+        public DbSet<item> items { get; set; }
         public DbSet<source> sources { get; set; }
     }
 }
