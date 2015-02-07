@@ -21,6 +21,7 @@ namespace MvcApplication8.Models
         public string guid { get; set; }
 
         public DateTime? Date { get; set; }
+        public int totalLike { get; set; }
 
         [ForeignKey("source")]
         public string srcName { get; set; }
@@ -30,12 +31,14 @@ namespace MvcApplication8.Models
         {
         }
 
-        public item(item i, DateTime d, string s) {
+        public item(item i, DateTime d, string s, int t)
+        {
             title = i.title;
             pubDate = i.pubDate;
             guid = i.guid;
             Date = d;
             srcName = s;
+            totalLike = t;
         }
 
         public virtual source source { get; set; }

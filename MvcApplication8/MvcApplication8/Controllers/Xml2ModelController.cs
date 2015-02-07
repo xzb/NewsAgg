@@ -22,6 +22,10 @@ namespace MvcApplication8.Controllers
 
         public ActionResult Index()
         {
+
+            //Linq 语法 计算在likes 中ItemID文章的总like数目，也可用EF方法实现，比较麻烦
+            // int x = db.likes.Count(like => like.ItemId ==101);
+            
             /******************************
              访问rss的地址，读取xml数据
              ******************************/
@@ -96,7 +100,7 @@ namespace MvcApplication8.Controllers
                 }
 
 
-                Models.item item = new Models.item(cars.item[i], time, "NYTimes");
+                Models.item item = new Models.item(cars.item[i], time, "NYTimes",0);
 
                 db.items.Add(item);               //item include 4 elements
                 //db.channel.Add(cars.item[i]);
