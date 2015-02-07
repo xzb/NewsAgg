@@ -147,5 +147,18 @@ namespace MvcApplication8.Controllers
         }
         */
 
+
+
+        public ActionResult auth(){
+            if( System.Web.HttpContext.Current != null ) {
+
+                // 检查当前用户是否已为一个已登录用户
+                bool isAuthenticated = System.Web.HttpContext.Current.Request.IsAuthenticated;
+
+                // 获取当前请求的用户名
+                string userName = System.Web.HttpContext.Current.User.Identity.Name;
+            }
+            return View();
+        }
     }
 }

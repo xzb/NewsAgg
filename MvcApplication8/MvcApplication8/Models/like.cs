@@ -12,7 +12,7 @@ namespace MvcApplication8.Models
         //public int Id { get; set; }
         [Key]
         [Column(Order = 0)]
-        public int UserId { get; set; }
+        public string UserName { get; set; }
         [Key]
         [Column(Order = 1)]
         public int ItemId { get; set; }
@@ -22,8 +22,8 @@ namespace MvcApplication8.Models
         public like()
         {
         }
-        public like(int uid, int iid) {
-            UserId = uid;      //foreign key can't use
+        public like(string n, int iid) {
+            UserName = n;      //foreign key can't use
             ItemId = iid;
         }
     }

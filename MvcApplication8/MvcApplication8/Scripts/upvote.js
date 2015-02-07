@@ -2,7 +2,7 @@
     //alert("alert test.");
 
     var Li = {
-        UserId: 1,
+        UserName: "ab",
         ItemId: obj
     }
     $.ajax({
@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $("#upvote-ajax").on("click", function () {
         var Li = {
-            UserId: 1,
+            UserName: "ab",
             ItemId: 13
         }
         $.ajax({
