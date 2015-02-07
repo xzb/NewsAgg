@@ -30,12 +30,16 @@
     <tr>
         <td>
             <!--<input type="button" onclick="save()" value="upvote" />-->       <!--用JavaScript的方法-->
-            <!--@Html.ActionLink("upvote", "upvote", new { id = item.Id })       MVC自带法得跳转到upvote页面再立刻跳转回来，不好用-->
+            <!--@Html.ActionLink("upvote", "upvote", new { id = item.Id })       MVC自带法得跳转到upvote页面再立刻跳转回来，不好用-->            
             
-            <!--<a href="#" id="upvote-ajax">upvote</a>-->        <!--未实现对应用户id和文章id的功能-->
-            <a href="javascript:;" id="upvote-ajax">
-                <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" />      <!--onclick="ClickUpvote()" />-->
-            </a>
+            <!--<a href="#" id="upvote-ajax">upvote</a>-->        <!--用id调用jQuery是不是不能传参数？-->
+            
+            <!--<a href="javascript:;" onclick="ClickUpvote(@item.Id)">            <!--需要修改母版<a>的样式-->
+            <!--    <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" /> </a>-->
+
+            <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" 
+                 onclick="ClickUpvote(@item.Id)" />
+
         </td>
         <td>
           <a href="@Html.DisplayFor(modelItem => item.guid)" target="_blank">@Html.DisplayFor(modelItem => item.title)</a>  
