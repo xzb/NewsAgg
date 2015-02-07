@@ -2,7 +2,7 @@
     //alert("alert test.");
 
     var Li = {
-        UserName: "ab",
+        UserName: "",
         ItemId: obj
     }
     $.ajax({

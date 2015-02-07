@@ -122,8 +122,19 @@ namespace MvcApplication8.Controllers
          ******************************/
         [HttpPost]
         public ActionResult Index(Models.like Li)   //通过AJAX在后台访问
-        {
-            db.likes.Add(Li);
+        {            
+            if (System.Web.HttpContext.Current != null)
+            {
+                // 检查当前用户是否已为一个已登录用户
+                //bool isAuthenticated = System.Web.HttpContext.Current.Request.IsAuthenticated;
+
+                // 获取当前请求的用户名
+                string userName = System.Web.HttpContext.Current.User.Identity.Name;
+
+                Li.UserName=userName;
+                db.likes.Add(Li);
+            }
+
             db.SaveChanges();
 
             return View();                      //?
@@ -148,17 +159,5 @@ namespace MvcApplication8.Controllers
         */
 
 
-
-        public ActionResult auth(){
-            if( System.Web.HttpContext.Current != null ) {
-
-                // 检查当前用户是否已为一个已登录用户
-                bool isAuthenticated = System.Web.HttpContext.Current.Request.IsAuthenticated;
-
-                // 获取当前请求的用户名
-                string userName = System.Web.HttpContext.Current.User.Identity.Name;
-            }
-            return View();
-        }
     }
 }
