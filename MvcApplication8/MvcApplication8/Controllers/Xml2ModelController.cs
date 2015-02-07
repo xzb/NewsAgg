@@ -133,9 +133,12 @@ namespace MvcApplication8.Controllers
 
                 Li.UserName=userName;
                 db.likes.Add(Li);
+
+                db.items.Find(Li.ItemId).totalLike+=1;
+                db.SaveChanges();
+
             }
 
-            db.SaveChanges();
 
             return View();                      //?
         }
