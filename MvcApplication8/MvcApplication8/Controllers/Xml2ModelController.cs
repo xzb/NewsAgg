@@ -112,8 +112,36 @@ namespace MvcApplication8.Controllers
 
 
 
+        /******************************
+         * 点赞功能
+         * action需要url访问激活，没必要建立点赞的url页面，需要AJAX？
+         ******************************/
+        [HttpPost]
+        public ActionResult Index(Models.like Li)   //通过AJAX在后台访问
+        {
+            db.likes.Add(Li);
+            db.SaveChanges();
+
+            return View();                      //?
+        }
+
         //
-        // POST: /Xml2Model/Create
+        // POST: /Xml2Model/upvote
+        /*public ActionResult upvote()
+        {
+            return View(db.likes.Find(id));     //去upvote页面，调用.AntiForgeryToken，再回到Index页面，费事
+        }
+        [HttpPost, ActionName("Index")]
+        [ValidateAntiForgeryToken]
+        public ActionResult upvoteConfirmed(int Uid, int Iid)
+        {
+            //Models.like Li = db.likes.Find(Uid,Iid);
+            Models.like Li = new Models.like( Uid, Iid );
+            db.likes.Add(Li);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        */
 
     }
 }

@@ -20,5 +20,7 @@ namespace MvcApplication8.Models
 
         public DbSet<item> items { get; set; }
         public DbSet<source> sources { get; set; }
+        public DbSet<like> likes { get; set; }
+
     }
 }
