@@ -1,14 +1,15 @@
-﻿/*function save() {
+﻿/*function ClickUpvote() {
     alert("alert test.");
 }*/
 
 //===AJAX, 后台访问url并修改数据库===
 $(document).ready(function () {
 
+
     $("#upvote-ajax").on("click", function () {
         var Li = {
             UserId: 1,
-            ItemId: 10
+            ItemId: 13
         }
         $.ajax({
             type: "POST",
