@@ -28,15 +28,18 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {        <!--可否逆序display?-->
+@*@foreach (var item in Model) {        <!--可否逆序display?-->  *@
+@for (var i = Model.Count()-1; i >= 0; i--) { 
+    var item =Model.ElementAt(i);
+    
     <tr>
         <td>
             <!--<input type="button" onclick="save()" value="upvote" />-->       <!--用JavaScript的方法-->
             <!--@Html.ActionLink("upvote", "upvote", new { id = item.Id })       MVC自带法得跳转到upvote页面再立刻跳转回来，不好用-->            
             
-            <!--<a href="#" id="upvote-ajax">upvote</a>-->        <!--用id调用jQuery是不是不能传参数？-->
+            <!--<a href="#" id="upvote-ajax">upvote</a>-->                      <!--用id调用jQuery是不是不能传参数？-->
            
-            <!--<a href="javascript:;" onclick="ClickUpvote(@item.Id)">            <!--需要修改母版<a>的样式-->
+            <!--<a href="javascript:;" onclick="ClickUpvote(@item.Id)">         <!--需要修改母版<a>的样式-->
             <!--    <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" /> </a>-->
 
             <img id="imgup" src="~/Images/thumb.png" style="width:18px;height:17px" 
@@ -44,7 +47,9 @@
 
         </td>
 		
-		<td><span id="totalLike">@Html.DisplayFor(modelItem => item.totalLike)</span></td>
+		<td>
+            <span id=@item.Id>@Html.DisplayFor(modelItem => item.totalLike)</span>      <!--直接让itemId作为id-->
+        </td>      
 
         <td>
           <a href="@Html.DisplayFor(modelItem => item.guid)" target="_blank">@Html.DisplayFor(modelItem => item.title)</a>  

@@ -13,6 +13,10 @@
             }*/
     });
 
+
+    document.getElementById(obj).innerHTML = "+1";     //只能改变第一行啊
+
+
 }
 
 //===AJAX, 后台访问url并修改数据库===
@@ -34,3 +38,4 @@ $(document).ready(function () {
     });
 
 });
+
